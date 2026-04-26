@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacidade da Integração TikTok — MAISA</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">MAISA</a>
+    <nav class="nav">
+      <a href="/" class="btn-cta">Voltar pro site</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <article class="doc">
+    <a href="/" class="back">← Início</a>
+    <h1>Política de Privacidade — Integração TikTok</h1>
+    <p class="meta">
+      Última atualização: 26 de abril de 2026 · Documento exigido pelo TikTok Developer Portal
+      como parte do app review
+    </p>
+
+    <p>
+      Este documento descreve <strong>especificamente</strong> quais dados a MAISA acessa quando o usuário conecta a própria conta TikTok Business à plataforma, e como esses dados são tratados. Para a política de privacidade geral da MAISA, veja <a href="/privacy.html">/privacy.html</a>.
+    </p>
+
+    <h2>Resumo em uma frase</h2>
+    <p>A MAISA acessa apenas <strong>métricas agregadas</strong> da sua conta TikTok Business pra mostrar análises pra você mesmo. Nada é compartilhado com terceiros. Nada é publicado em sua conta sem ação explícita sua.</p>
+
+    <h2>1. Permissões (scopes) que pedimos</h2>
+    <p>Quando você clica em "Conectar TikTok", a MAISA solicita 4 permissões via TikTok Login Kit:</p>
+    <ul>
+      <li><strong>user.info.basic</strong> — identificador único da sua conta (open_id) e nome de exibição. Necessário pra associar sua conta TikTok ao seu perfil MAISA.</li>
+      <li><strong>user.info.profile</strong> — foto de perfil, descrição, link público. Usado pra mostrar avatar da conta nos painéis da MAISA.</li>
+      <li><strong>user.info.stats</strong> — número de seguidores, número de seguidos, total de vídeos publicados, total de curtidas recebidas. Usado pra calcular taxas e benchmarks.</li>
+      <li><strong>video.list</strong> — lista dos seus vídeos públicos com métricas de cada um (views, curtidas, comentários, compartilhamentos, duração, capa). Usado pra análise de desempenho.</li>
+    </ul>
+    <p><strong>O que NÃO pedimos:</strong> não temos acesso a mensagens privadas, comentários nos seus vídeos, lista de seguidores individuais, conteúdo dos vídeos (apenas metadados), ou capacidade de publicar/editar/deletar nada da sua conta.</p>
+
+    <h2>2. Como usamos os dados</h2>
+    <ul>
+      <li>Mostrar painéis de desempenho dentro da MAISA (apenas pra você).</li>
+      <li>Permitir que a inteligência artificial da MAISA analise tendências dos seus vídeos e sugira melhorias específicas pro seu conteúdo.</li>
+      <li>Gerar relatórios e exports (PDF) que você pode compartilhar com a sua equipe se quiser.</li>
+    </ul>
+
+    <h2>3. Como armazenamos</h2>
+    <ul>
+      <li><strong>Tokens de acesso</strong>: criptografados em vault gerenciado (Supabase Vault, baseado em pgsodium). Apenas o serviço backend da MAISA pode descriptografá-los — humanos não têm acesso ao token em texto puro.</li>
+      <li><strong>Métricas sincronizadas</strong>: salvas em banco PostgreSQL com Row-Level Security ativa, isolando dados por tenant.</li>
+      <li><strong>Backups</strong>: snapshots diários criptografados em Cloudflare R2, retidos por 30 dias.</li>
+    </ul>
+
+    <h2>4. Compartilhamento com terceiros</h2>
+    <p>
+      Os dados da sua conta TikTok são acessados <strong>apenas</strong> pela infraestrutura da MAISA pra entregar as funcionalidades descritas. <strong>Nenhum dado é vendido, alugado ou compartilhado</strong> com plataformas de marketing, anunciantes, brokers de dados ou qualquer terceiro.
+    </p>
+    <p>
+      Sub-processadores que tocam dados durante a operação:
+    </p>
+    <ul>
+      <li><strong>OpenAI</strong> — quando a IA analisa suas métricas, um resumo das estatísticas (não tokens de acesso) é enviado pra o modelo de linguagem. A OpenAI <strong>não usa essas chamadas de API pra treinar modelos</strong> conforme política da empresa.</li>
+      <li><strong>Supabase</strong> — banco de dados.</li>
+      <li><strong>Cloudflare R2</strong> — backups criptografados.</li>
+    </ul>
+
+    <h2>5. Retenção e exclusão</h2>
+    <ul>
+      <li><strong>Enquanto a integração estiver ativa</strong>: dados ficam disponíveis pra análise.</li>
+      <li><strong>Quando você desconecta no botão "Desconectar TikTok"</strong>: o token é apagado imediatamente do vault. Métricas históricas ficam disponíveis pra você visualizar até 30 dias depois, e depois são removidas.</li>
+      <li><strong>Quando você apaga sua conta MAISA</strong>: todos os dados associados são removidos em até 7 dias, incluindo tokens, métricas, conversas e backups (próximo ciclo de retenção do R2).</li>
+    </ul>
+    <p>Você também pode revogar o acesso da MAISA diretamente pelo TikTok em <a href="https://www.tiktok.com/settings/apps" target="_blank" rel="noopener">tiktok.com/settings/apps</a>.</p>
+
+    <h2>6. Seus direitos</h2>
+    <p>Em qualquer momento você pode:</p>
+    <ul>
+      <li><strong>Desconectar</strong> a integração na tela de Integrações da MAISA.</li>
+      <li><strong>Solicitar exportação</strong> de todos os dados que coletamos da sua conta TikTok.</li>
+      <li><strong>Solicitar exclusão</strong> imediata desses dados, mesmo que mantenha sua conta MAISA ativa.</li>
+    </ul>
+    <p>Pra exercer esses direitos: <a href="mailto:d.ravetta79@gmail.com">d.ravetta79@gmail.com</a>.</p>
+
+    <h2>7. Conformidade com TikTok Developer Terms</h2>
+    <p>
+      A MAISA respeita as TikTok Developer Terms of Service e usa a TikTok Login Kit conforme as Diretrizes pra Desenvolvedores. Não armazenamos conteúdo de vídeo. Não solicitamos permissões além das listadas. Não fazemos scraping. Todos os dados são acessados via API oficial.
+    </p>
+
+    <h2>8. Atualizações</h2>
+    <p>
+      Mudanças nesta política são notificadas por email aos usuários ativos com integração TikTok conectada e refletidas pela data no topo. A versão histórica fica disponível no histórico do GitHub do site da MAISA.
+    </p>
+
+    <h2>9. Contato</h2>
+    <p>
+      Daniel Ravetta — encarregado de proteção de dados<br>
+      Email: <a href="mailto:d.ravetta79@gmail.com">d.ravetta79@gmail.com</a><br>
+      MAISA · MIA Human Tecnology
+    </p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2026 MAISA · MIA Human Tecnology</div>
+    <div class="links">
+      <a href="/privacy.html">Privacidade</a>
+      <a href="/terms.html">Termos</a>
+      <a href="/tiktok-privacy.html">Privacidade TikTok</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
