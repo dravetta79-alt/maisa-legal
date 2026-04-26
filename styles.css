@@ -206,6 +206,89 @@ a:hover { text-decoration: underline; }
 .site-footer .links { display: flex; gap: 18px; flex-wrap: wrap; }
 .site-footer .links a { color: var(--ink-2); }
 
+/* Logo with mark */
+.logo.logo-with-mark {
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.logo.logo-with-mark img {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.logo.logo-with-mark span {
+  background: linear-gradient(135deg, var(--pink), var(--gold));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Hero with image */
+.hero.hero-with-image { padding-top: 60px; padding-bottom: 60px; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+.hero-image img {
+  width: 100%; height: auto;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* Agent cards (com imagem) */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.agent-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.agent-card img {
+  width: 100%; height: auto;
+  display: block;
+}
+.agent-card .agent-body {
+  padding: 22px;
+}
+.agent-card h3 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+.agent-card .agent-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 8px;
+}
+.agent-card .agent-quote {
+  font-style: italic;
+  color: var(--gold);
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+}
+.agent-card ul {
+  list-style: none; padding: 0; margin: 0 0 14px;
+}
+.agent-card li {
+  padding: 4px 0; color: var(--ink-2); font-size: 0.9rem;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.agent-card li::before { content: "→"; color: var(--pink); flex-shrink: 0; }
+.agent-card .agent-solves {
+  margin: 0; font-size: 0.85rem; color: var(--ink-3);
+  padding-top: 12px; border-top: 1px solid var(--border);
+}
+.agent-card .agent-solves strong { color: var(--green); }
+
 /* Legal pages content */
 .doc {
   padding: 60px 0;
